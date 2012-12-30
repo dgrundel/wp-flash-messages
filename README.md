@@ -8,7 +8,7 @@ Use the function *queue_flash_message()* to enqueue a flash message that will be
 *queue_flash_message()* takes the following form:
 
 ```
-<?php queue_flash_message( $message, $class = 'updated' ) ?>;
+<?php queue_flash_message( $message, $class = 'updated' ); ?>
 ```
 
 The two parameters are:

@@ -9,9 +9,9 @@
 
 	class WPFlashMessages {
 
-		public function __construct() {
-		    add_action('admin_notices', array(&$this, 'show_flash_messages'));
-		}
+        public function __construct() {
+            add_action('admin_notices', array(&$this, 'show_flash_messages'));
+        }
 
         //Flash Messages
         public static function queue_flash_message($message, $class = null) {
@@ -36,12 +36,11 @@
             delete_option('wp_flash_messages');
         }
 	}
+    new WPFlashMessages();
 
-	new WPFlashMessages();
-
-	//convenience function
-	if( class_exists('WPFlashMessages') && !function_exists('queue_flash_message') ) {
-		function queue_flash_message($message, $class = null) {
-			WPFlashMessages::queue_flash_message($message, $class);
-		}
-	}
+    //convenience function
+    if( class_exists('WPFlashMessages') && !function_exists('queue_flash_message') ) {
+        function queue_flash_message($message, $class = null) {
+            WPFlashMessages::queue_flash_message($message, $class);
+        }
+    }

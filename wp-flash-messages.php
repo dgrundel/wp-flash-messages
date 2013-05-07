@@ -7,7 +7,7 @@
     Author URI: http://webpresencepartners.com
 */
 
-	class WPFlashMessages {
+    class WPFlashMessages {
 
         public function __construct() {
             add_action('admin_notices', array(&$this, 'show_flash_messages'));
@@ -35,7 +35,7 @@
             //clear flash messages
             delete_option('wp_flash_messages');
         }
-	}
+    }
     new WPFlashMessages();
 
     //convenience function

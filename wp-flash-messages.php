@@ -14,8 +14,14 @@
         }
 
         //Flash Messages
-        public static function queue_flash_message($message, $class = null) {
-            $class = ($class === null) ? 'updated' : $class;
+        public static function queue_flash_message($message, $class = '') {
+
+            $default_allowed_classes = array('error', 'updated');
+            $allowed_classes = apply_filters('flash_messages_allowed_classes', $default_allowed_classes);
+            $default_class = apply_filters('flash_messages_default_class', 'updated');
+
+            if(!in_array($class, $allowed_classes)) $class = $default_class;
+
             $flash_messages = maybe_unserialize(get_option('wp_flash_messages', array()));
             $flash_messages[$class][] = $message;
 

@@ -25,3 +25,22 @@ The output will look like this:
 ```
 
 *This is the same markup that WordPress generates for its own flash messages.*
+
+By default, only the two built-in messages classes of **updated** and **error** are allowed, but you can modify the array of allowed classes using the **flash_messages_allowed_classes** filter, like so:
+
+```
+function my_flash_classes($allowed_classes) {
+    $allowed_classes[] = 'notice'; //adds 'notice' class to allowed array
+    return $allowed_classes;
+}
+add_filter('flash_messages_allowed_classes', 'my_flash_classes');
+```
+
+If an invalid class name is used when queueing a message, the default class **updated** is used instead. Of course, you can also change this with a filter:
+
+```
+function my_flash_default_class($default_class_name) {
+    return 'error'; //makes 'error' the default class name
+}
+add_filter('flash_messages_default_class', 'my_flash_default_class');
+```
